@@ -266,6 +266,7 @@ public:
 	void DumpToFile(const std::filesystem::path& filePath) const
 	{
 		std::ofstream file(filePath, std::ios::out | std::ios::binary);
+		file.exceptions(std::ios::failbit | std::ios::badbit);
 		if (!file.is_open())
 			throw(FileReaderException(L"Failed to open file for dumping: " + filePath.wstring()));
 		file.write(reinterpret_cast<const char*>(m_pData), m_size);
@@ -496,6 +497,7 @@ public:
 		if (m_bufferMode)
 		{
 			std::ofstream file(filePath, std::ios::out | std::ios::binary);
+			file.exceptions(std::ios::failbit | std::ios::badbit);
 			file.write(reinterpret_cast<const char*>(m_buffer.data()), m_buffer.size());
 		}
 	}

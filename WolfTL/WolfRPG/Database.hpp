@@ -622,6 +622,7 @@ public:
 		outputFilePath += ".json";
 
 		std::ofstream out(outputFilePath);
+		out.exceptions(std::ios::failbit | std::ios::badbit);
 		out << j.dump(4);
 
 		out.close();

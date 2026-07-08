@@ -159,7 +159,7 @@ inline tString FullStrip(tString str)
 inline tString EscapePath(tString path)
 {
 	path = FullStrip(path);
-	path = std::regex_replace(path, std::wregex(L"[\\/\\\\:\\*\\?\\\"<>\\|]"), L"_");
+	path = std::regex_replace(path, std::wregex(L"[\n\r\\/\\\\:\\*\\?\\\"<>\\|]"), L"_");
 
 	return path;
 }

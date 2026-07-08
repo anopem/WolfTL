@@ -337,6 +337,7 @@ public:
 			outputFilePath += ".json"; // Don't use replace_extension here in case the filename contains a dot
 
 			std::ofstream out(outputFilePath);
+			out.exceptions(std::ios::failbit | std::ios::badbit);
 			out << j.dump(4);
 
 			out.close();
